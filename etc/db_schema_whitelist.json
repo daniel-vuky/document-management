@@ -1,0 +1,25 @@
+{
+    "documents_management": {
+        "column": {
+            "entity_id": true,
+            "name": true,
+            "tagging": true,
+            "short_description": true,
+            "status": true,
+            "website_ids": true,
+            "file_name": true,
+            "preview_image": true,
+            "sort_order": true,
+            "url_rewrite": true,
+            "published_date": true,
+            "created_at": true,
+            "updated_at": true
+        },
+        "index": {
+            "DOCUMENTS_MANAGEMENT_NAME_SHORT_DESCRIPTION_TAGGING": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}

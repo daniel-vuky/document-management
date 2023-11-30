@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="documents_management" resource="default" engine="innodb" comment="Sosc Documents">
+        <column xsi:type="int" name="entity_id" unsigned="true" nullable="false" identity="true"
+                comment="Entity ID"/>
+        <column xsi:type="varchar" name="name" nullable="true" length="255" comment="name"/>
+        <column xsi:type="varchar" name="tagging" nullable="true" length="512" comment="Tagging"/>
+        <column xsi:type="text" name="short_description" nullable="true" comment="Short Description"/>
+        <column xsi:type="smallint" name="status" nullable="true" comment="Status"/>
+        <column xsi:type="varchar" name="website_ids" nullable="true" length="32" comment="Website Ids"/>
+        <column xsi:type="text" name="file_name" nullable="true" comment="File Name"/>
+        <column xsi:type="varchar" name="preview_image" nullable="true" length="255" comment="Preview Image"/>
+        <column xsi:type="int" name="sort_order" nullable="true" comment="Sort Order"/>
+        <column xsi:type="varchar" name="url_rewrite" nullable="true" length="255" comment="Type"/>
+        <column xsi:type="date" name="published_date" nullable="true" comment="Published Date"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="entity_id"/>
+        </constraint>
+        <index referenceId="DOCUMENTS_MANAGEMENT_NAME_SHORT_DESCRIPTION_TAGGING" indexType="fulltext">
+            <column name="name"/>
+            <column name="short_description"/>
+            <column name="tagging"/>
+        </index>
+    </table>
+
+</schema>

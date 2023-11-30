@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Anhvdk\DocumentManagement\Api\Data\DocumentInterface"
+                type="Anhvdk\DocumentManagement\Model\Document" />
+    <preference for="Anhvdk\DocumentManagement\Api\Data\DocumentSearchResultInterface"
+                type="Anhvdk\DocumentManagement\Model\DocumentSearchResult" />
+    <preference for="Anhvdk\DocumentManagement\Api\DocumentRepositoryInterface"
+                type="Anhvdk\DocumentManagement\Model\DocumentRepository" />
+
+    <virtualType name="DocumentListing" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="resourceModel" xsi:type="string">Anhvdk\DocumentManagement\Model\ResourceModel\Document\Collection</argument>
+            <argument name="mainTable" xsi:type="string">documents_management</argument>
+        </arguments>
+    </virtualType>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument xsi:type="array">
+                <item xsi:type="string" name="document_listing_data_source">DocumentListing</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\UrlRewrite\Model\UrlRewrite">
+        <arguments>
+            <argument name="entityToCacheTagMap" xsi:type="array">
+                <item name="mage-document" xsi:type="const">Anhvdk\DocumentManagement\Model\Document::CACHE_TAG</item>
+            </argument>
+        </arguments>
+    </type>
+</config>
